@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin vezérlőpult</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      import "typeface-open-sans";
+    </script>
+    <style>
+      body {
+        font-family: "Open Sans", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="container mt-5">
+    <h2>Admin vezérlőpult</h2>
+    <a href="logout.php" class="btn btn-danger mb-3">Kijelentkezés</a>
+
+    <!-- Navigáció -->
+    <ul class="nav nav-tabs mb-3" id="adminTabs">
+      <li class="nav-item">
+        <a class="nav-link active" data-path="pizzas/index.html" href="#"
+          >Termékek</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-path="categories/index.html" href="#"
+          >Kategóriák</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-path="orders/index.html" href="#"
+          >Rendelések</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-path="users/index.html" href="#">Adminok</a>
+      </li>
+    </ul>
+
+    <!-- Tartalom -->
+    <div id="tabContent">
+      <p>Válassz egy menüpontot!</p>
+    </div>
+
+    <script>
+      function loadSection(path) {
+        $("#tabContent").html("<p>Töltés...</p>");
+        $("#tabContent").load(path);
+      }
+
+      $(function () {
+        // Alapértelmezetten betöltjük a pizzákat
+        loadSection("pizzas/index.html");
+
+        $("#adminTabs .nav-link").click(function (e) {
+          e.preventDefault();
+          $("#adminTabs .nav-link").removeClass("active");
+          $(this).addClass("active");
+
+          const path = $(this).data("path");
+          loadSection(path);
+        });
+      });
+    </script>
+  </body>
+</html>

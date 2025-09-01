@@ -1,0 +1,81 @@
+/* többi font-weight/stílus ugyanígy, ha kell */
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+.product-card {
+  min-height: 280px;
+}
+.header {
+  background-color: #ff2b06;
+  width: 100vw;
+  height: 5vw;
+}
+
+.sliderContainer {
+  width: 100vw;
+}
+#slider {
+  width: 100vw;
+  margin-left: 0px;
+  margin-right: 0px;
+  justify-content: center;
+}
+
+#logo {
+  margin-left: 20vw;
+  width: auto;
+  height: 4vw;
+}
+#cart {
+  margin-left: 48vw;
+  width: auto;
+  border: none;
+}
+
+#cartView {
+  display: none;
+  width: auto;
+  z-index: 9999;
+}
+
+#orderForm {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  border-radius: 3%;
+  background-color: #f4dba5;
+}
+
+/*arányos kép megjelnítés */
+.image-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.cart-col {
+  /*border-right: 1px solid #ccc;*/
+  padding-right: 20px;
+  margin-bottom: 20px;
+}
+
+/*@media (min-width: 768px) {
+  #cartView .cart-col {
+    border-right: 1px solid #ccc;
+  }
+}*/
+
+@media (max-width: 540px) {
+  #logo {
+    margin-left: 20vw;
+    width: auto;
+    height: 7vw;
+  }
+
+  .header {
+    background-color: #ff2b06;
+    width: 100vw;
+    height: 10vw;
+  }
+}

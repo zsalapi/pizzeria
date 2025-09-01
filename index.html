@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pizzéria rendelés</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      import 'typeface-open-sans';
+    </script>
+     <link href="./css/frontend.css" rel="stylesheet"></style>
+  </head>
+  <body>
+    <div class="header">
+      <img id="logo" src="imgs/logo.jpg" alt="Pizzah Logo" />
+      <button id="cart" class="btn btn-outline-primary">
+        <img src="imgs/cart.png" alt="Kosár" />
+      </button>
+    </div>
+    <div class="sliderContainer">
+       <img id="slider" src="/pizzeria/imgs/slider.jpg">
+    </div>
+    <div class="container py-4">
+      <h1 class="mb-4">Pizzéria</h1>
+
+      <div class="mb-3">
+        <label for="categorySelect" class="form-label">Kategória:</label>
+        <select
+          id="categorySelect"
+          class="form-select"
+          style="max-width: 300px"
+        >
+          <option value="">Összes</option>
+        </select>
+      </div>
+
+      <div id="productsContainer" class="row gy-4"></div>
+
+      <!-- kosár és rendelés -->
+      <div id="cartView" class="container mt-8">
+        <div class="row">
+          <div class="col-md-6 cart-col">
+            <h3>Kosár tartalma</h3>
+            <div id="cartOnlyContainer"><p>Üres a kosár.</p></div>
+          </div>
+          <div class="col-md-6" id="orderForm">
+            <h3>Megrendelés</h3>
+            <form id="orderFormCart" class="row g-3">
+              <div class="col-12">
+                <label for="nameCart" class="form-label">Név</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nameCart"
+                  name="name"
+                  required
+                />
+              </div>
+              <div class="col-12">
+                <label for="phoneCart" class="form-label">Telefonszám</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="phoneCart"
+                  name="phone"
+                  required
+                />
+              </div>
+              <div class="col-12">
+                <label for="addressCart" class="form-label">Cím</label>
+                <textarea
+                  class="form-control"
+                  id="addressCart"
+                  name="address"
+                  rows="2"
+                  required
+                ></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-success">
+                  Megrendelés
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      <br />
+      <hr />
+      <center>Pizzah &copy;</center>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/frontend.js"></script>
+  </body>
+</html>
