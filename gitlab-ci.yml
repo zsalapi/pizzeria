@@ -1,0 +1,85 @@
+stages:
+  - build
+  - test
+  - static_analysis
+  - deploy
+  - security
+
+# Docker build
+docker-build:
+  image: docker:latest
+  stage: build
+  services:
+    - docker:dind
+  script:
+    - docker build -t pizzeria-app .
+    - docker run -d -p 8000:80 --name pizzeria-app pizzeria-app
+  only:
+    - feature/*  # Csak a feature branch-eken fusson
+
+# PHPUnit tesztelés
+phpunit-tests:
+  image: php:8.0
+  stage: test
+  services:
+    - mysql:5.7  # Ha adatbázis szükséges
+  script:
+    - apt-get update && apt-get install -y git unzip
+    - curl -sS https://getcomposer.org/installer | php
+    - php composer.phar install
+  only:
+    - feature/*  # Csak a feature branch-eken fusson
+
+# Feature tesztelés (pl. Laravel Dusk)
+feature-tests:
+  image: php:8.0
+  stage: test
+  script:
+    - apt-get update && apt-get install -y git unzip
+    - curl -sS https://getcomposer.org/installer | php
+    - php composer.phar install
+  only:
+    - feature/*  # Csak a feature branch-eken fusson
+
+# Biztonsági tesztelés - Snyk
+snyk-security-test:
+  image: snyk/snyk-cli:latest
+  stage: security
+  script:
+    - snyk test --all-projects  # Tesztelés az összes projekt fájlon
+  only:
+    - feature/*  # Csak a feature branch-eken fusson
+
+# PHPStan statikus kódanalízis
+phpstan-static-analysis:
+  image: php:8.0
+  stage: static_analysis
+  script:
+    - apt-get update && apt-get install -y git unzip
+    - curl -sS https://getcomposer.org/installer | php
+    - php composer.phar install
+  only:
+    - feature/*  # Csak a feature branch-eken fusson
+
+# SonarQube kódminőség és biztonság tesztelés
+sonarqube-analysis:
+  image: maven:latest  # Használj Maven vagy egyéb build image-t a SonarQube elemzéshez
+  stage: static_analysis
+  script:
+    - apt-get update && apt-get install -y git unzip
+    - curl -sS https://getcomposer.org/installer | php
+    - php composer.phar install
+    - sonar-scanner  # SonarQube elemzés futtatása
+  only:
+    - feature/*  # Csak a feature branch-eken fusson
+
+# Deploy
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying application..."
+    - docker stop pizzeria-app || true  # Ha fut, leállítjuk
+    - docker rm pizzeria-app || true  # Ha létezik, töröljük
+    - docker run -d -p 8000:80 --name pizzeria-app pizzeria-app
+  only:
+    - feature/*  # Csak a feature branch-eken fusson
