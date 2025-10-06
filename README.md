@@ -15,7 +15,7 @@ because the browser remembers what we uploaded previously, it is worth deleting 
 
 
 You can install the database with the file from sql directory, the passwords of the two admin user:
-admin / titok1234
+admin / titok1234   |
 admin2 / titok1234
 
 ----------------------------------------------------------------------------------------------------------------------------
