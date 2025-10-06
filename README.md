@@ -1,4 +1,5 @@
 Pizzeria website, which is a trial task for PostiveAdamsky, was completed in one day. I am publishing it as free software. Please use it freely.
+Add also a small gitlab-ci.yml which contains tests, I used It in my local Gitlab.
 
 The task: Creating a food ordering website
 
