@@ -1,6 +1,25 @@
 Pizzeria website, which is a trial task for PostiveAdamsky, was completed in one day. I am publishing it as free software. Please use it freely.
 Add also a small gitlab-ci.yml which contains tests, I used It in my local Gitlab.
 
+Since categories can be changed dynamically from the admin interface,
+therefore I put the choice for customers in a drop-down menu on the main page, so there will be no problem, for example, with 8 categories.
+
+By clicking on the cart, the cart layer will be displayed, by clicking on it again, we will return to the products.
+
+On the admin interface, by clicking on the ID, you can find out what the person ordered and how much it cost.
+
+I uploaded Open Sans from the npm package.
+
+When updating products, it is worth checking the file upload section
+because the browser remembers what we uploaded previously, it is worth deleting this from the form or figuring out what we want to upload!
+
+
+You can install the database with the file from sql directory, the passwords of the two admin user:
+admin / titok1234
+admin2 / titok1234
+
+----------------------------------------------------------------------------------------------------------------------------
+
 The task: Creating a food ordering website
 
 Create a fully functional pizza ordering website with an admin interface where you can upload new pizzas with images, categories, and admin users. It should be possible to edit and delete this data.
